@@ -716,7 +716,7 @@ body::before {
 }
 .new-form-container .signup-btn, .login-btn {
     background-color: #7d2ae8;
-    margin-top: 30px;
+    margin-top: 40px;
     width: 100%;
     padding: 10px 0;
     border: none;
