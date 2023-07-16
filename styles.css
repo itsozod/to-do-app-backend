@@ -758,6 +758,9 @@ body::before {
   .new-form-container {
     max-width: 290px;
   }
+  .error-output {
+    font-size: 15px;
+  }
 }
 @media screen and (max-width: 309px) {
   .new-form-container {
