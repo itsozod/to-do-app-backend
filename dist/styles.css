@@ -1,0 +1,766 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+body::before {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background-image: url(images/to-do-bcg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: var(--before-opacity, 1);
+}
+.lines {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.line1,
+.line2,
+.line3 {
+  background-color: white;
+  width: 30px;
+  height: 5px;
+  margin: 3px;
+  transition: 0.3s;
+}
+.line1.active {
+  transform: translateY(10px) rotate(235deg);
+}
+.line3.active {
+  transform: translateY(-10px) rotate(-230deg);
+}
+#header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: rgba(57, 97, 240, 0.5);
+  box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+/* header */
+.header-container {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+.h1-header {
+  margin-right: 10px;
+  font-family: "Lobster", cursive;
+}
+/* dark mode */
+#toggleDark {
+  margin-right: 10px;
+  font-size: 25px;
+  color: goldenrod;
+  cursor: pointer;
+}
+
+.list-home,
+.list-notes {
+  list-style-type: none;
+  padding: 8px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 2px 2px 5px white;
+  font-family: "PT Serif", serif;
+}
+.active {
+  color: red;
+  list-style-type: disc;
+}
+/* page container */
+.page-container {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+}
+.page-container.dark {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+/* side-bar */
+.side-bar {
+  flex: 0 0 200px;
+  min-height: 100vh;
+  background-color: rgba(135, 206, 250, 0.5);
+  box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.5);
+  border-right: 2px solid red;
+  display: none;
+}
+/* main */
+#main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-add-home {
+  display: flex;
+  justify-content: center;
+}
+/* add todos container */
+.add-homeContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(lightskyblue, lightpink);
+  border-radius: 20px;
+  width: 220px;
+  height: 50px;
+  margin-top: 20px;
+}
+.h1-home {
+  margin-left: 10px;
+  font-size: 25px;
+  font-family: "Secular One", sans-serif;
+}
+/* add home button */
+.add-home-btn {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.add-home-btn.active {
+  transform: scale(1.3) rotate(360deg);
+}
+.main-add-notes {
+  display: flex;
+  justify-content: center;
+}
+/* add notes container */
+.add-notesContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(lightcoral, lightblue);
+  border-radius: 20px;
+  width: 220px;
+  height: 50px;
+  margin-top: 20px;
+  display: none;
+}
+.h1-notes {
+  margin-left: 10px;
+  font-size: 25px;
+  font-family: "Secular One", sans-serif;
+}
+/* add notes button */
+.add-notes-btn {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.add-notes-btn.active {
+  transform: scale(1.3) rotate(360deg);
+}
+/* media queries for sidebar */
+@media screen and (max-width: 840px) {
+  .page-container {
+    flex-direction: column;
+  }
+  .side-bar {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    border: none;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .ul-bar {
+    margin-top: 20px;
+    margin-right: 35px;
+  }
+  .list-home {
+    list-style-type: none;
+    width: 85px;
+    border-radius: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+  }
+  .list-home.active {
+    background-image: linear-gradient(lightblue, lightseagreen);
+    color: red;
+    text-shadow: none;
+  }
+  .list-notes {
+    list-style-type: none;
+    width: 81px;
+    border-radius: 10px;
+    font-size: 25px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 20px;
+  }
+  .list-notes.active {
+    background-image: linear-gradient(lightblue, lightseagreen);
+    color: red;
+    text-shadow: none;
+  }
+}
+/* input and submit */
+#name {
+  padding: 8px;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid yellow;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+  font-size: 18px;
+}
+#name:focus {
+  border: 2px solid red;
+}
+#nameError {
+  margin-top: 5px;
+  color: red;
+  font-size: 15px;
+}
+#note {
+  padding: 8px;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid yellow;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 300px;
+  max-width: 500px;
+  resize: horizontal;
+}
+#noteName {
+  padding: 8px;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid yellow;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 200px;
+  max-width: 500px;
+}
+#note:focus {
+  border: 2px solid green;
+}
+#noteName:focus {
+  border: 2px solid green;
+}
+#noteError {
+  margin-top: 5px;
+  color: red;
+  font-size: 15px;
+}
+#submit-btn {
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: lightskyblue;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "Lobster", cursive;
+}
+#submit-btn:hover {
+  background-color: aqua;
+}
+#submit-btn1 {
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: lightskyblue;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Lobster", cursive;
+  font-size: 18px;
+}
+#submit-btn1:hover {
+  background-color: limegreen;
+}
+/* media queries for header and add todos button */
+@media screen and (max-width: 333px) {
+  .h1-header {
+    font-size: 25px;
+  }
+  .checked-img {
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+  }
+  #name {
+    font-size: 15px;
+  }
+  #submit-btn {
+    font-size: 15px;
+  }
+}
+.main-home-form {
+  display: flex;
+  justify-content: center;
+}
+.form-container {
+  display: none;
+  margin-top: 20px;
+}
+/* empty message for todos tab */
+.main-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.empty-container {
+  background-image: linear-gradient(lightcoral, lightseagreen);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 250px;
+}
+.empty {
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  text-shadow: 2px 2px 2px orange;
+}
+/* empty message for notes tab */
+.main-empty-notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.empty-notes-container {
+  background-image: linear-gradient(lightcoral, lightseagreen);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 250px;
+}
+.empty-notes {
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  text-shadow: 2px 2px 2px orange;
+}
+.main-notes-form {
+  display: flex;
+  justify-content: center;
+}
+.form-container1 {
+  display: flex;
+  justify-content: center;
+  background-color: bisque;
+  max-width: 520px;
+  padding: 20px;
+  margin: 20px;
+  display: none;
+  border-radius: 10px;
+  border: 2px dotted blue;
+}
+#form1 {
+  display: flex;
+  flex-direction: column;
+}
+/* to dos container */
+.main-todos {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  /* display: none; */
+}
+/* to do container */
+.todos-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  max-width: 520px;
+  background-color: transparent;
+  border-radius: 10px;
+  /* display: none; */
+}
+.container {
+  display: flex;
+  margin: 10px;
+  padding: 8px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: yellow;
+  border: 2px solid lightcoral;
+  border-radius: 10px;
+  max-width: 500px;
+}
+.green {
+  width: 45px;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.red {
+  width: 45px;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  display: none;
+}
+.todo {
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-family: 'DM Serif Display', serif;
+  text-shadow: 2px 2px 2px white;
+}
+.todo.completed {
+  text-decoration: line-through;
+}
+.button-container {
+  display: flex;
+}
+.todo-btn {
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.delete-todo {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.add-back-btn {
+  margin-left: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.input-add {
+  padding: 5px;
+  outline: none;
+  border: 2px solid orange;
+}
+.input-add:focus {
+  border: 2px solid lightseagreen;
+}
+/* media queries for todos container */
+@media screen and (max-width: 401px) {
+  .container {
+    max-width: 300px;
+  }
+  .todo {
+    font-size: 18px;
+  }
+  .green {
+    width: 35px;
+  }
+  .red {
+    width: 35px;
+  }
+  .delete-todo {
+    width: 35px;
+  }
+  .todo-btn {
+    width: 35px;
+  }
+  .add-back-btn {
+    width: 30px;
+    height: 35px;
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 343px) {
+  .container {
+    max-width: 280px;
+  }
+  .input-add {
+    width: 120px;
+  }
+  .todo {
+    font-size: 14px;
+  }
+  .green {
+    width: 30px;
+  }
+  .red {
+    width: 30px;
+  }
+  .delete-todo {
+    width: 30px;
+  }
+  .todo-btn {
+    width: 30px;
+  }
+  .add-back-btn {
+    width: 30px;
+  }
+}
+@media screen and (max-width: 291px) {
+  .container {
+    max-width: 220px;
+  }
+  .input-add {
+    width: 110px;
+  }
+  .todo {
+    font-size: 10px;
+  }
+}
+.main-notes-container {
+  display: grid;
+  /* display: none; */
+}
+/* notes container */
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-gap: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.notes {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.note-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+.description {
+  text-align: center;
+  resize: none;
+  outline: none;
+  cursor: pointer;
+  width: 215px;
+  border: 2px solid lightseagreen;
+  font-size: 20px;
+}
+.note-name {
+  width: 215px;
+  height: 200px;
+  resize: vertical;
+  outline: none;
+  border: 2px solid lightseagreen;
+  cursor: pointer;
+  border-top: none;
+  font-size: 17px;
+}
+.desc-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+.delete-note {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+/* media queries for notes container */
+@media (max-width: 640px) {
+  .notes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .notes {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+/* media query for notes form container */
+@media screen and (max-width: 375px) {
+  #note {
+    width: 200px;
+  }
+  #noteName {
+    width: 200px;
+  }
+}
+
+/* signup button */
+ .sign-button-container {
+    display: flex;
+    justify-content: center;
+}
+.mainBtn {
+    padding: 8px;
+    background-color: lightcoral;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-family: "PT Serif", serif;
+}
+.mainBtn:hover {
+    background-color: lightpink;
+}
+/* signup form */
+.new-form-container {
+    position: absolute;
+    max-width: 320px;
+    margin-top: -30px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+} 
+.new-form-container.show {
+  display: flex;
+}
+.form-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #0b0217;
+    font-size: 22px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.new-form-container .sign-desc {
+    font-size: 22px;
+    color: #0b0217;
+    text-align: center;
+}
+.input-box {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+}
+.input-box input {
+    height: 100%;
+    width: 100%;
+    padding: 0 30px;
+    color: #333;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+    border-bottom: 1.5px solid #aaaaaa;
+} 
+.input-box input:focus {
+    border-color: #7d2ae8;
+}
+.input-box i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #707070;
+}
+.input-box i.email, 
+.input-box i.password {
+    left: 0;
+}
+.input-box i.pw_hide {
+    right: 0;
+    font-size: 18px;
+    cursor: pointer;
+}
+.input-box input:focus ~ i.email, 
+.input-box input:focus ~ i.password {
+    color: #7d2ae8;
+}
+.new-form-container a {
+    color: #7d2ae8;
+    font-size: 15px;
+    text-decoration: none;
+}
+.new-form-container a:hover {
+    text-decoration: underline;
+}
+.new-form-container .signup-btn, .login-btn {
+    background-color: #7d2ae8;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.login-signup {
+    text-align: center;
+    margin-top: 15px;
+}
+.input-box.success input {
+  border-bottom: 1.5px solid #7d2ae8;
+}
+.input-box.error-output input {
+  border-bottom: 1.5px solid #ff3860;
+}
+.error-output {
+  color: #ff3860;
+}
+.signup-form {
+  display: none;
+}
+.signup-form.show {
+  display: block;
+}
+.login-form.noshow {
+  display: none;
+}
+@media screen and (max-width: 840px) {
+  .mainBtn {
+    padding: 10px;
+    font-size: 20px;
+    margin-left: -2px;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .new-form-container {
+    max-width: 290px;
+  }
+}
+@media screen and (max-width: 309px) {
+  .new-form-container {
+    max-width: 265px;
+  }
+}
